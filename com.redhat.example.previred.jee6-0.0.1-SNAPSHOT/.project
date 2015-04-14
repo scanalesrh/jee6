@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>com.redhat.example.previred.jee6-0.0.1-SNAPSHOT</name>
+	<comment></comment>
+	<projects>
+		<project>com.redhat.example.previred.jee6-commons-0.0.1-SNAPSHOT</project>
+		<project>com.redhat.example.previred.jee6-ejb-0.0.1-SNAPSHOT</project>
+		<project>com.redhat.example.previred.jee6-web-0.0.1-SNAPSHOT</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.m2e.core.maven2Builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.m2e.core.maven2Nature</nature>
+	</natures>
+</projectDescription>

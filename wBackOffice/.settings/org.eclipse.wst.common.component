@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="wBackOffice">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="primefaces-4.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/PreviredLibs/Primefaces/4.0/primefaces-4.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="PreviredEJB.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/PreviredLibs/Previred/1.0/PreviredEJB.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="PreviredTO.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/PreviredLibs/Previred/1.0/PreviredTO.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="xnio-api-3.0.0.GA-javadoc.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib//home/scanales/Downloads/xnio-api-3.0.0.GA-javadoc.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="wBackOffice"/>
+        <property name="java-output-path" value="/wBackOffice/WebContent/WEB-INF/classes"/>
+    </wb-module>
+</project-modules>

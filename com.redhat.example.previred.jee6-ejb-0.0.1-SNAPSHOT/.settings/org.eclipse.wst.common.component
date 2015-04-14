@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="com.redhat.example.previred.jee6-ejb-0.0.1-SNAPSHOT">
+        <wb-resource deploy-path="/" source-path="/ejbModule"/>
+        <wb-resource deploy-path="/" source-path="/src/main/java"/>
+        <property name="java-output-path" value="/com.redhat.example.previred.jee6-ejb-0.0.1-SNAPSHOT/target/classes"/>
+    </wb-module>
+</project-modules>

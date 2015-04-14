@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="PreviredBusiness">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="PreviredDAO.jar" deploy-path="/lib" handle="module:/resource/PreviredDAO/PreviredDAO">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="PreviredEJB.jar" deploy-path="/" handle="module:/resource/PreviredEJB/PreviredEJB">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="PreviredNegocio.jar" deploy-path="/lib" handle="module:/resource/PreviredNegocio/PreviredNegocio">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="PreviredTO.jar" deploy-path="/lib" handle="module:/resource/PreviredTO/PreviredTO">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

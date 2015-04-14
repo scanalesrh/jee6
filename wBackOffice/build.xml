@@ -1,0 +1,144 @@
+<project name="Ant" default="all" basedir=".">
+	<!-- ==================== File and Directory Names ======================== -->
+	<property name="basedir.local"			value="."/>
+	<property name="output.war"			 	value="wBackOffice.war"/>
+	<property name="lib.jar"			 	value="WebContent/WEB-INF/lib"/>
+	<property name="libs.negocio"			value="../earBackOffice/EarContent/lib"/>
+	<property name="java.libs"				value="./../PreviredLibs"/>
+	<!-- ==================== Compilation Control Options ==================== -->
+	<property name="compile.debug" 			value="true"/>
+	<property name="compile.deprecation" 	value="true"/>
+	<property name="compile.optimize" 		value="true"/>
+
+	<!-- ==================== External Dependencies =========================== -->
+	<path id="classpath">
+		<pathelement path="./../PreviredEJB/PreviredEJB.jar"/>
+		<pathelement path="./../PreviredJSF/PreviredJSF.jar"/>
+		<pathelement path="./../PreviredDAO/PreviredDAO.jar"/>
+		<pathelement path="./../PreviredNegocio/PreviredNegocio.jar"/>
+		<pathelement path="./../PreviredTO/PreviredTO.jar"/>
+		<pathelement path="./../PreviredUtils/PreviredUtils.jar"/>	
+		<pathelement path="${java.libs}/PrimeFaces/4.0/primefaces-4.0.jar"/>
+		<pathelement path="${java.libs}/Apache/Commons/IO/2.4/commons-io-2.4.jar"/>
+    	<pathelement path="${java.libs}/jboss/jboss-ejb-api_3.1_spec-1.0.2.Final-redhat-2.jar"/>
+		<pathelement path="${java.libs}/jboss/jboss-jaxrpc-api_1.1_spec-1.0.1.Final-redhat-3.jar"/>
+		<pathelement path="${java.libs}/jboss/jboss-jsf-api_2.1_spec-2.1.19.1.Final-redhat-1.jar"/>
+		<pathelement path="${java.libs}/jboss/jboss-servlet-api_3.0_spec-1.0.2.Final-redhat-1.jar"/>
+		<pathelement path="${java.libs}/jboss/jboss-connector-api_1.6_spec-1.0.1.Final-redhat-2.jar"/>
+		<pathelement path="${java.libs}/jboss/mail-1.4.5-redhat-1.jar"/>
+				
+		
+	</path>
+	
+	<path id="svn.classpath">
+		<fileset dir= "${java.libs}/tmate">
+			<include name="antlr-runtime-3.4.jar" />
+			<include name="jna-3.5.2.jar" />
+			<include name="jsch.agentproxy.connector-factory-0.0.7.jar" />
+			<include name="jsch.agentproxy.core-0.0.7.jar" />
+			<include name="jsch.agentproxy.pageant-0.0.7.jar" />
+			<include name="jsch.agentproxy.sshagent-0.0.7.jar" />
+			<include name="jsch.agentproxy.svnkit-trilead-ssh2-0.0.7.jar" />
+			<include name="jsch.agentproxy.usocket-jna-0.0.7.jar" />
+			<include name="jsch.agentproxy.usocket-nc-0.0.7.jar" />
+			<include name="platform-3.5.2.jar" />
+			<include name="sequence-library-1.0.2.jar" />
+			<include name="sqljet-1.1.10.jar" />
+			<include name="svnkit-1.8.5.jar" />
+			<include name="svnkit-cli-1.8.5.jar" />
+			<include name="svnkit-javahl16-1.8.5.jar" />
+			<include name="trilead-ssh2-1.0.0-build217.jar" /><!-- aka ganymed.jar -->
+		</fileset>
+	</path>
+
+	<!-- ==================== Clean Target ==================================== -->
+	<target name="clean.inicio" description="Limpia el directorio build">
+		<delete file="${output.war}"/>
+	</target>
+
+	<target name="clean.fin" description="Limpia el directorio build" >
+		<delete file="${lib.jar}/${jar.Proyecto}"/>
+		<delete dir="WebContent/WEB-INF/lib" includeemptydirs="yes" includes="**/*"/>
+		<delete dir="WebContent/WEB-INF/classes" includeemptydirs="yes" includes="**/*"/>
+	</target>
+
+	<!-- ==================== Compile Target ================================== -->
+	<target name="java.compila" description="Compila los fuentes de java">
+		<javac srcdir="${basedir.local}" 
+			   destdir="${basedir.local}/WebContent/WEB-INF/classes" 
+			   debug="${compile.debug}" 
+			   deprecation="${compile.deprecation}"
+     	       optimize="${compile.optimize}"
+			   includeantruntime="false">
+			<classpath refid="classpath"/>
+		</javac>
+		<copy todir="${basedir.local}/WebContent/WEB-INF/classes/messages">  
+		     <fileset dir="./src/messages" includes="**"/>  
+		 </copy>
+	</target>
+
+	<target name="jarPreviredUtils" >
+		<ant antfile="../PreviredUtils/build.xml" inheritAll="false" inheritrefs="false" />
+		<copy overwrite="true" todir="${libs.negocio}" file="../PreviredUtils/PreviredUtils.jar"/>
+	</target>
+
+	<target name="jarPreviredTO" >
+		<ant antfile="../PreviredTO/build.xml" inheritAll="false" inheritrefs="false" />
+		<copy overwrite="true" todir="${libs.negocio}" file="../PreviredTO/PreviredTO.jar"/>
+	</target>
+
+	<target name="jarPreviredDAO" >
+		<ant antfile="../PreviredDAO/build.xml" inheritAll="false" inheritrefs="false" />
+		<copy overwrite="true" todir="${libs.negocio}" file="../PreviredDAO/PreviredDAO.jar"/>
+	</target>
+
+	<target name="jarPreviredNegocio" >
+		<ant antfile="../PreviredNegocio/build.xml" inheritAll="false" inheritrefs="false" />
+		<copy overwrite="true" todir="${libs.negocio}" file="../PreviredNegocio/PreviredNegocio.jar"/>
+	</target>
+
+	<target name="jarPreviredEJB" >
+		<ant antfile="../PreviredEJB/build.xml" inheritAll="false" inheritrefs="false" />
+		<copy overwrite="true" todir="../earBackOffice/EarContent" file="../PreviredEJB/PreviredEJB.jar"/>
+	</target>
+
+	<target name="jarPreviredJSF" >
+		<ant antfile="../PreviredJSF/build.xml" inheritAll="false" inheritrefs="false" />
+		<copy overwrite="true" todir="${lib.jar}" file="../PreviredJSF/PreviredJSF.jar"/>
+		<copy overwrite="true" todir="${lib.jar}" file="${java.libs}/PrimeFaces/4.0/primefaces-4.0.jar"/>
+	</target>
+	
+	<target name="jarWJSFComponents" >
+		<ant antfile="../wJSFComponents/build.xml" inheritAll="false" inheritrefs="false" />
+		<copy overwrite="true" todir="${lib.jar}" file="../wJSFComponents/wJSFComponents.jar"/>
+		<delete file="../wJSFComponents/wJSFComponents.jar"/>
+	</target>
+
+	<target name="crea.info.versiones">  
+		<ant antfile="../PreviredUtils/build.xml" inheritAll="false" inheritrefs="false" />
+		<copy overwrite="true" todir="." file="../PreviredUtils/PreviredUtils.jar"/>
+
+	    <java fork="true" classname="com.previred.utils.InfoSVN2" classpathref="svn.classpath">
+	    	<arg id="0" value="earBackOffice"/>
+	       	<classpath>  
+	            <path location="PreviredUtils.jar"/>  
+	       </classpath>  
+	    </java>  
+			
+		<delete file="../PreviredUtils/PreviredUtils.jar"/>
+		<delete file="PreviredUtils.jar"/>
+	</target>
+		
+	
+	<!-- ==================== Crea los Archivos WAR ================================== -->
+	<target name="war.crea" description="Crea war del proyecto">
+		<war destfile="${output.war}" webxml="WebContent/WEB-INF/web.xml" duplicate="fail">
+			<fileset dir="WebContent">
+				<exclude name="**/*.jar"/>
+			</fileset>
+			<lib dir="${lib.jar}"/>
+		</war>
+	</target>
+
+	<target name="all" depends="clean.inicio, jarPreviredUtils, jarPreviredTO, jarPreviredDAO, jarPreviredNegocio, jarPreviredEJB, jarPreviredJSF, jarWJSFComponents, java.compila, crea.info.versiones, war.crea, clean.fin"/>
+</project>

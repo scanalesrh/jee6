@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.redhat.example</groupId>
+		<artifactId>previred.jee6</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../com.redhat.example.previred.jee6-0.0.1-SNAPSHOT</relativePath>
+	</parent>
+	<groupId>com.redhat.example.ejb</groupId>
+	<artifactId>previred.jee6-ejb</artifactId>
+	<name>Previred JEE6 ejb</name>
+	<description>Componente EJB</description>
+	<dependencies>
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<version>1.1</version>
+		</dependency>
+  	<dependency>
+  		<groupId>javax.validation</groupId>
+  		<artifactId>validation-api</artifactId>
+  		<version>1.1.0.Final</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.redhat.example.commons</groupId>
+  		<artifactId>previred.jee6-commons</artifactId>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.jboss.spec.javax.ejb</groupId>
+  		<artifactId>jboss-ejb-api_3.1_spec</artifactId>
+  		<version>1.0.2.Final-redhat-2</version>
+  	</dependency>
+	</dependencies>
+  <build>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-ejb-plugin</artifactId>
+  			<version>2.3</version>
+		    <configuration>
+		        <ejbVersion>3.1</ejbVersion>
+		    </configuration>  			
+  		</plugin>
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-ejb-plugin</artifactId>
+  			<version>2.3</version>
+  		</plugin>
+  	</plugins>
+  </build>
+  <packaging>ejb</packaging>
+</project>

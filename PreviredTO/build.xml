@@ -1,0 +1,57 @@
+<project name="Ant" default="all" basedir=".">
+<!-- ==================== File and Directory Names ======================== -->
+	<property name="basedir.local"			value="."/>
+	<property name="output.jar"			 	value="PreviredTO.jar"/>
+
+<!-- ==================== Compilation Control Options ==================== -->	
+	<property name="compile.debug" 			value="true"/>
+	<property name="compile.deprecation" 	value="true"/>
+	<property name="compile.optimize" 		value="true"/>
+
+<!-- ==================== External Dependencies =========================== -->	
+	<path id="classpath">
+	</path>
+	
+<!-- ==================== Clean Target ==================================== -->
+	<target name="cleanInicio" description="Limpia el directorio build">
+		<delete dir="${directorio.salida}"/>
+		<mkdir  dir="${jar.directorio.negocio}"/>
+	</target>
+
+	<target name="cleanFin" description="Limpia el directorio build">
+		<delete file="${jar.Generico}"/>
+		<delete dir="${app.src}"/>
+	</target>
+
+<!-- ==================== Compile Target ================================== -->
+	<target name="java.compila" description="Compila los fuentes de java">
+		<javac srcdir="${basedir.local}" 
+			   destdir="${basedir.local}" 
+			   debug="${compile.debug}" 
+			   deprecation="${compile.deprecation}"
+     	       optimize="${compile.optimize}"
+			   includeantruntime="false">
+			<classpath refid="classpath"/>
+		</javac>
+	</target>	
+	
+
+	<!-- ==================== Crea los Archivos JAR ================================== -->
+	<target name="jar.crea" description="Crea jar de las clases del projecto">
+		<jar jarfile="${output.jar}">			
+			<fileset dir="${basedir.local}">
+				<include name="**/*.class"/>
+			</fileset>
+		    <manifest>
+  		    	<attribute name="Main-Class" value=""/>
+		      	<attribute name="Built-By" value="previred"/>
+		      	<attribute name="Implementation-Vendor" value="Previred"/>
+		      	<attribute name="Implementation-Title" value="PreviredTO"/>
+		      	<attribute name="Implementation-Version" value="1.0"/>
+		    	<attribute name="Class-Path" value=""/>
+		    </manifest>
+		</jar>			
+	</target>
+	
+	<target name="all" depends="java.compila, jar.crea"></target>
+</project>

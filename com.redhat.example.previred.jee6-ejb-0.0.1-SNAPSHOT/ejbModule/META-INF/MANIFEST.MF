@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Dependencies: com.redhat.example.previred
+Class­Path: previred.jee6-commons-0.0.1-SNAPSHOT.jar
+

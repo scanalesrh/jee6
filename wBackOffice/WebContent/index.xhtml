@@ -1,0 +1,25 @@
+<!DOCTYPE HTML[
+    <!ENTITY nbsp "&#160;"> 
+]>
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>.::Demo JSF EJB PreviRed::.</title>  
+    
+	
+</h:head>
+<h:body>
+	   
+			<h:panelGroup layout="block" >
+			<p:messages globalOnly="true" />
+				<h:form id="form1" prependId="false" rendered="#{usuarioBean.usuario eq null}">
+					<h:outputText value="Rut Usuario: " />
+					<p:inputText value="#{usuarioBean.rut}" required="true" label="Rut"/>					
+					<p:commandButton id="btnGuardar" value="Consultar" action="#{usuarioBean.consultaUsuario()}" />
+				</h:form>
+			</h:panelGroup>			
+</h:body>
+</html>

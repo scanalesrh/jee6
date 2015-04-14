@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.redhat.example</groupId>
+  <artifactId>previred.jee6</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Previred JEE6</name>
+  <description>Proyecto demo Previred con implementación JEE6</description>
+  <dependencyManagement>
+  	<dependencies>
+  		<dependency>
+  			<groupId>com.redhat.example.web</groupId>
+  			<artifactId>previred.jee6-web</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+  			<type>war</type>
+  		</dependency>
+  		<dependency>
+  			<groupId>com.redhat.example.commons</groupId>
+  			<artifactId>previred.jee6-commons</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>com.redhat.example.ejb</groupId>
+  			<artifactId>previred.jee6-ejb</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+  		</dependency>
+  	</dependencies>
+  </dependencyManagement>
+  <modules>
+  	<module>
+  		../com.redhat.example.previred.jee6-commons-0.0.1-SNAPSHOT
+  	</module>
+  	<module>
+  		../com.redhat.example.previred.jee6-web-0.0.1-SNAPSHOT
+  	</module>
+  	<module>
+  		../com.redhat.example.previred.jee6-ejb-0.0.1-SNAPSHOT
+  	</module>
+  	<module>../business-ear</module>
+  	<module>../presentation-ear</module>
+  </modules>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>  
+</project>
